@@ -1,0 +1,214 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-size: 1em;
+    font-family:  monospace;
+    display: grid;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-columns: auto;
+    grid-template-rows: 8vh auto 8vh;
+    height: 100vh;
+    width: auto;
+}
+
+header {
+    grid-area: header;
+    background: whitesmoke;
+    padding: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #9b344aa2;
+    }
+
+main {
+   grid-area: main;
+    background: white;
+    background-image:linear-gradient(white,grey, black) ;
+    display: grid;
+   
+   
+}
+
+img{
+    height:75vh;
+    object-fit: fill;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+	
+}
+footer {
+    grid-area: footer;
+    background: black;
+
+    padding: 1px;
+     display: grid;
+    grid-template-areas: "a a a a a";
+     grid-template-columns:  repeat(5, 1fr)
+}
+
+
+
+main div1 {
+    
+    float:left ;
+    grid-area: 2 / 1 / span 1 / span 6;
+            }
+    
+div2 {
+    
+    float:left ;
+    margin: 0cm;
+    grid-area: 3 / 2 / span 1 / span 1;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-image: url("https://image.flaticon.com/icons/png/512/40/40347.png");
+    background-size: 35%;
+    background-position: left; 
+    background-repeat: no-repeat; /* Do not repeat the image */
+    }
+
+div3 {
+    
+    float:left ;
+    margin: 0cm;
+    grid-area: 3 / 4 / span 1 / span 1;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-image: url("https://image.flaticon.com/icons/png/512/89/89168.png");
+    background-size: 35%;
+    background-position: left; 
+    background-repeat: no-repeat; /* Do not repeat the image */
+    }
+        
+div4 {
+    
+    float:left ;
+    grid-area: 1 / 2 / span 1 / span 1;
+    } 
+div5 {
+    
+    float:left ;
+    grid-area: 1 / 3 / span 1 / span 1;
+    }
+            
+div6 {
+    grid-area: 1 / 4 / span 1 / span 1;
+    float:left ;
+    }
+
+button#b1 {
+    background: rgb(134, 123, 123);
+    border-width: 3px;
+    border-style: solid;
+    border-color: #9c9898;
+    padding: 0.5px;
+    margin: 0.5px;
+    font-size: 2em;
+    font-family:  monospace;
+    color: whitesmoke;
+}
+
+button#b2 {
+    background: rgb(134, 123, 123);
+    border-width: 3px;
+    border-style: solid;
+    border-color: #9c9898;
+    padding: 0.5px;
+    margin: 0.5px;
+    font-size: 2em;
+    font-family:  monospace;
+    color: whitesmoke;
+}
+
+button#b3 {
+    background: rgb(134, 123, 123);
+    background-image: url("https://cdn.icon-icons.com/icons2/508/PNG/512/home_house_icon-icons.com_49851.png");
+    background-size: 20%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    
+    border-width: 3px;
+    border-style: solid;
+    border-color: #9c9898;
+    padding: 0.5px;
+    margin: 0.5px;
+    font-size: 2em;
+    font-family:  monospace;
+    color: whitesmoke;
+}
+
+button#b4 {
+    background: rgb(134, 123, 123);
+    border-width: 3px;
+    border-style: solid;
+    border-color: #9c9898;
+    padding: 0.5px;
+    margin: 0.5px;
+    font-size: 2em;
+    font-family:  monospace;
+    color: whitesmoke;
+}
+button#b5 {
+    background: rgb(134, 123, 123);
+    border-width: 3px;
+    border-style: solid;
+    border-color: #9c9898;
+    padding: 0.5px;
+    margin: 0.5px;
+    font-size: 2em;
+    font-family:  monospace;
+    color: whitesmoke;
+}
+
+button#lock {
+    background: black;
+    color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #9b344aa2;
+    font-size: 1em;
+    font-family:  monospace;
+    grid-area: 2 / 2 / span 1 / span 1;
+    
+
+}
+button#unlock{
+    background: black;
+    color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #9b344aa2;
+    font-size: 1em;
+    font-family:  monospace;
+    grid-area: 2 / 2 / span 1 / span 1;
+    
+}
+
+button#closeleft{
+    grid-area: 4 / 2 / span 1 / span 1;
+
+}
+
+button#openleft{
+    grid-area: 4 / 2 / span 1 / span 1;
+
+}
+button#closeright {
+    grid-area: 4 / 4 / span 1 / span 1;
+
+}
+
+button#openright {
+    grid-area: 4 / 4 / span 1 / span 1;
+
+}
+
+div#welcometext {
+    font-size: x-large;
+    margin-left: auto;
+    margin-right: auto;
+ 
+}

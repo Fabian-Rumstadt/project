@@ -1,0 +1,59 @@
+This description is work in progress and it probably continues to be work in progress while you are working on your project.
+Design your project planning accordingly.
+
+The project consists in designing and creating the user application of a car entertainment system.
+The car entertainment system is implemented as a 19" touch screen attached to a Raspberry Pi running a web browser,
+so that the application can actually be a web app. That Pi -- the entertainment Pi -- is resposible for capturing all user interactions and displaying
+audiovisual content of all kinds. The car's audio system runs on the entertainment Pi as well.
+The entertainment Pi is not under your control. You can do nothing with it but play out web content to it.
+
+For development purposes you will emulate the car enternment system's touch screen with your browser.
+And, no, you don't get a free car. The car's backend system will be represented by a Raspberry Pi -- the backend Pi -- equipped with a Sense Hat,
+which features sensors temperature, barometric pressure, and humidity, as well as a gyroscope, an accelerometer, and a magnetometer.
+A web service (not to be developed by you) provides mock-up data about current speed and position, consumption, and remaining fuel.
+Another web service features access to a library of music files. 
+The Sense Hat also has an 8x8 LED matrix which will be used in representation of certain car functions.
+The entertainment Pi and the backend Pi are connected over a TCP/IP network.
+
+After setting up your backend Pi -- your first task -- you develop a web app which is running on a web server on the Pi,
+which serves the web app to the display tablet. With the app the user must be able to accomplish the following:
+
+Get access to all function groups via a clearly arranged main screen which also contains information about the current time and date.
+Obtain information about current speed, consumption, and the other mentioned operating parameters of the car in a clear and concise way.
+Browse through the music library and play songs.
+Access comfort functions such as locking and unlocking the doors, as well as opening and closing windows individually and all at once.
+These functions will be represented by drawing appropiate symbols on the LED matrix.
+It is important that the functions are not just stuffed into one page. 
+The user's view must rather be dynamically re-configured in order to get the best usability. Page reloads must be avoided, so DOM manipulation has to be used.
+
+Option packs for those who get bored:
+dk
+Operate the user interface on the entertainment PI with buttons on the steering wheel. The buttons will be mimicked by the five joystick buttons on the Sense Hat.
+Pressing the button will take the main display to the main screen or the music jukebox screen, for example.
+Integrate Google Maps and show the cars current position.
+Receive system status / error messages from the car and display them on the entertainment Pi.
+The project is carried individually by each participant. Each of you will get a package containing the necessary hardware,
+ for you to use during the project and later return. You are required to use VS Codium with git integration.
+ The reference browser is Chromium. Make sure you break up the project in reasonable work packages.
+
+The project is accomplished once you have implemented the functionality listed above, excluding the option packs.
+The project is awarded with a certificate, not a mark. Hence, if you do option packs, you won' get a better mark, but more experience :)
+Things you learn in the project will be covered by the oral exam, however. This way doing options may improve your mark.
+Bear in mind, that while it is intended that you work together and support each other, each participant must develop his or her own solution.
+
+Once you have finished, your project will be reviewed. Before you report your project ready, make sure you deliver code that works.
+The  review of your project covers following components: user interface operabilty, code on the Pi. 
+Check your code for cleanliness: The code must be properly formatted (e. g. with indentions and new lines).
+Write self-explaining code, using e. g. speaking variable names, but scarcely comment your code where you believe that what it does is not evident.
+Make sure your solution on the Pi has nothing that is not needed, e. g. older versions, obsolete test directories etc. 
+The git project on your development machine will also be inspected before awarding the certificate.
+Note that you should not be striving for code that "just works" but clearly structured and formatted code that is comprehensible also for others.
+
+There will be no project presentations.
+
+Please note that if your code fails to comply with the above mentioned, the certificate for the project will not be awarded,
+and you will have to start anew in the next course. Also keep in mind that there will only be one submission,
+ rather than slice-wise "Is it now good enough?" deliveries.
+
+Finally, be aware that backups are your very own responsibility. Your lab workstations may be subjected to re-installs at any time,
+ and without further notice, for example in the case of security issues. Use GitHub for version management.
