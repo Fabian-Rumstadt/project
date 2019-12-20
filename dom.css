@@ -18,15 +18,17 @@ header {
     border-width: 1px;
     border-style: solid;
     border-color: #9b344aa2;
+    display: grid;
+    grid-template-areas: "a a a";
+    grid-template-columns:  fit-content(15%); /*parameter =max.content*/
+    grid-template-rows: repeat(3,1fr);
     }
 
 main {
    grid-area: main;
     background: white;
     background-image:linear-gradient(white,grey, black) ;
-    display: grid;
-   
-   
+    display: grid;  
 }
 
 img{
@@ -35,27 +37,24 @@ img{
     display: block;
     margin-left: auto;
     margin-right: auto
-	
 }
+
 footer {
     grid-area: footer;
     background: black;
-
     padding: 1px;
-     display: grid;
+    display: grid;
     grid-template-areas: "a a a a a";
-     grid-template-columns:  repeat(5, 1fr)
+    grid-template-columns:  repeat(5, 1fr)
 }
 
-
-
-main div1 {
+main cardata {
     
     float:left ;
     grid-area: 2 / 1 / span 1 / span 6;
-            }
+    }
     
-div2 {
+main currentspeed {
     
     float:left ;
     margin: 0cm;
@@ -67,9 +66,9 @@ div2 {
     background-size: 35%;
     background-position: left; 
     background-repeat: no-repeat; /* Do not repeat the image */
-    }
+        }
 
-div3 {
+main consumption {
     
     float:left ;
     margin: 0cm;
@@ -83,132 +82,169 @@ div3 {
     background-repeat: no-repeat; /* Do not repeat the image */
     }
         
-div4 {
+main temperature {
     
     float:left ;
     grid-area: 1 / 2 / span 1 / span 1;
     } 
-div5 {
-    
+main pressure {
     float:left ;
     grid-area: 1 / 3 / span 1 / span 1;
     }
             
-div6 {
+main humidity {
     grid-area: 1 / 4 / span 1 / span 1;
     float:left ;
     }
 
-button#b1 {
-    background: rgb(134, 123, 123);
-    border-width: 3px;
-    border-style: solid;
-    border-color: #9c9898;
-    padding: 0.5px;
-    margin: 0.5px;
-    font-size: 2em;
-    font-family:  monospace;
-    color: whitesmoke;
-}
-
-button#b2 {
-    background: rgb(134, 123, 123);
-    border-width: 3px;
-    border-style: solid;
-    border-color: #9c9898;
-    padding: 0.5px;
-    margin: 0.5px;
-    font-size: 2em;
-    font-family:  monospace;
-    color: whitesmoke;
-}
-
-button#b3 {
-    background: rgb(134, 123, 123);
+/*Positionierung Bild im homebutton*/
+#homebutton {
+    
     background-image: url("https://cdn.icon-icons.com/icons2/508/PNG/512/home_house_icon-icons.com_49851.png");
+    background-size: 15%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+/*Stylen aller navbuttons*/
+.navbutton {
+    background: rgb(134, 123, 123);
+    border-width: 3px;
+    border-style: solid;
+    border-color: #9c9898;
+    padding: 0.5px;
+    margin: 0.5px;
+    font-size: 2em;
+    font-family:  monospace;
+    color: whitesmoke;
+}
+.navbutton:hover {
+    background:rgb(56, 55, 55);
+    border-color:black;
+}
+.navbutton:active{
+    background:white;
+    color:rgb(56, 55, 55);
+    border-color: yellow;
+}
+
+
+/*Positionierung buttons im Grid, im Reiter Settings*/
+button#lock {grid-area: 2 / 2 / span 1 / span 1;}
+button#unlock{grid-area: 2 / 2 / span 1 / span 1;}
+button#closeleft{grid-area: 4 / 2 / span 1 / span 1;}
+button#openleft{grid-area: 4 / 2 / span 1 / span 1;}
+button#closeright {grid-area: 4 / 4 / span 1 / span 1;}
+button#openright {grid-area: 4 / 4 / span 1 / span 1;}
+button#closeall{grid-area: 4 / 6 / span 1 / span 1;}
+button#openall{grid-area: 4 / 6 / span 1 / span 1;}
+
+/*Styling der Buttons,im Reiter Settings*/
+.actionbuttons {
+    background: black;
+    color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #9b344aa2;
+    font-size: 1em;
+    font-family:  monospace;
+    
+    }
+
+.actionbuttons:hover {
+    background:rgb(42, 28, 42);
+    padding-right: 10%;
+    border-color: white;
+    font-size: 1em;
+    font-family:  monospace;
+}
+
+
+
+
+.actionbuttons:active {
+    color: rgb(42, 28, 42);
+    background:white;
+    padding-right: 10%;
+    font-size: 1em;
+    font-family:  monospace;
+}
+
+.musicbuttons{
+    background-color: white;
     background-size: 20%;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    
-    border-width: 3px;
+    border-color: orange;
     border-style: solid;
-    border-color: #9c9898;
-    padding: 0.5px;
-    margin: 0.5px;
-    font-size: 2em;
-    font-family:  monospace;
-    color: whitesmoke;
+margin: 10%;
 }
 
-button#b4 {
-    background: rgb(134, 123, 123);
-    border-width: 3px;
-    border-style: solid;
-    border-color: #9c9898;
-    padding: 0.5px;
-    margin: 0.5px;
-    font-size: 2em;
-    font-family:  monospace;
-    color: whitesmoke;
+
+
+play.musicbuttons {
+    background-image: url("https://img.icons8.com/ios/50/000000/play.png");
+    grid-area: 4 / 3 / span 1 / span 1;
 }
-button#b5 {
-    background: rgb(134, 123, 123);
-    border-width: 3px;
-    border-style: solid;
-    border-color: #9c9898;
-    padding: 0.5px;
-    margin: 0.5px;
-    font-size: 2em;
-    font-family:  monospace;
-    color: whitesmoke;
+pause.musicbuttons{
+    background-image: url("https://img.icons8.com/android/24/000000/pause.png");
+   grid-area: 4 / 3 / span 1 / span 1;
 }
 
-button#lock {
-    background: black;
-    color: white;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #9b344aa2;
-    font-size: 1em;
-    font-family:  monospace;
-    grid-area: 2 / 2 / span 1 / span 1;
-    
-
-}
-button#unlock{
-    background: black;
-    color: white;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #9b344aa2;
-    font-size: 1em;
-    font-family:  monospace;
-    grid-area: 2 / 2 / span 1 / span 1;
-    
-}
-
-button#closeleft{
-    grid-area: 4 / 2 / span 1 / span 1;
-
-}
-
-button#openleft{
-    grid-area: 4 / 2 / span 1 / span 1;
-
-}
-button#closeright {
+skip.musicbuttons{
+    background-image: url("https://img.icons8.com/ios/50/000000/next.png");
     grid-area: 4 / 4 / span 1 / span 1;
-
 }
 
-button#openright {
-    grid-area: 4 / 4 / span 1 / span 1;
-
+previous.musicbuttons{
+    background-image: url("https://img.icons8.com/ios/50/000000/previous.png");
+    grid-area: 4 / 2 / span 1 / span 1;
 }
+currentplay{
+    grid-area: 3 / 2 / span 1 / span 3; 
+        background-color:white;
+    height: 70%;
+    margin: 1%;
+    float: middle;
+    border-color:orange;
+    border-style: solid;
+    color: black;
+    font-size: 3em;
+    font-family:  monospace;
+   
+      }
+select{   
+        grid-area: 1 / 2 / span 1 / span 3;  
+        border-color: orange;
+        border-style: solid;
+        height: 40%;
+        margin: 1%;
+        font-size: 2em;
+        font-family:  monospace; 
+        position: static;
+}
+  
+currentlyplaying{
+    grid-area: 3 / 1;
+}
+
+div#status {
+    grid-area:2 / 1 / span 1/ span 1;
+    text-align: left;
+}
+div#statustext {
+    grid-area:2 / 2 / span 1/ span 1;
+    text-align: left;
+    
+}
+div#clock {
+    grid-area:2 / 3 / span 1/ span 1;
+    text-align: right;
+    }
 
 div#welcometext {
     font-size: x-large;
     margin-left: auto;
     margin-right: auto;
- 
-}
+ }
+
