@@ -7,11 +7,11 @@ var countwindow = 0
 var IntervalID
 
 var aktuelleVerbrauchswerte = document.createElement("cardata") //muss global definiert werden, da aus verschiedenen Funtkionen darauf zugegriffen wird!
-    let currentspeed = document.createElement("currentspeed")
-    let consumption = document.createElement("consumption")
-    let temperature = document.createElement("temperature")
-    let pressure = document.createElement("pressure")
-    let humidity = document.createElement("humidity")
+let currentspeed = document.createElement("currentspeed")
+let consumption = document.createElement("consumption")
+let temperature = document.createElement("temperature")
+let pressure = document.createElement("pressure")
+let humidity = document.createElement("humidity")
 
 function startingroutine() {
     startTime();
@@ -22,11 +22,14 @@ function startTime() {
     let today = new Date();
     let h = today.getHours();
     let m = today.getMinutes();
+    if (m < 10) { m = "0" + m } //führende Nullen anfügen
     let s = today.getSeconds();
     let month = today.getMonth() + 1;
+    if (month < 10) { month = "0" + month }
     let date = today.getDate();
+    if (date < 10) { date = "0" + date }
     let year = today.getFullYear()
-    
+
 
     document.getElementById('clock').innerHTML =
         date + "." + month + "." + year + " - " + h + ":" + m;
@@ -54,47 +57,47 @@ function displaycar() {
     clearInterval(IntervalID);
     fetchfordisplaycar()
     main[0].innerHTML = ""
-    
+
     main[0].appendChild(aktuelleVerbrauchswerte)
     main[0].appendChild(currentspeed)
     main[0].appendChild(consumption)
     main[0].appendChild(temperature)
     main[0].appendChild(pressure)
     main[0].appendChild(humidity)
-        
-        
+
+
 
 
     document.getElementById("statustext").innerHTML = "No problems found."
-    
-    IntervalID = setInterval(fetchfordisplaycar,1500);
+
+    IntervalID = setInterval(fetchfordisplaycar, 1500);
 }
 
-function fetchfordisplaycar(){
-   
-    fetch("http://192.168.178.63:5000/status").then(function (response) {
-        response.text().then(function (text) {
+function fetchfordisplaycar() {
+
+    fetch("http://192.168.178.63:5000/status").then(function(response) {
+        response.text().then(function(text) {
 
             let array = JSON.parse(text)
-            
 
-            
+
+
 
             aktuelleVerbrauchswerte.innerHTML = "aktuelle Verbrauchswerte"
             currentspeed.innerHTML = "current speed: " + array.speed + " km/h"
-            //currentspeed.innerHTML = "current speed: " + testvar
+                //currentspeed.innerHTML = "current speed: " + testvar
             consumption.innerHTML = "consumption: " + Math.round(array.consumption * 100) / 100 + " l/100km"
             temperature.innerHTML = "temperature: " + Math.round(array.temp * 100) / 100 + " °C"
             pressure.innerHTML = "barometric pressure: " + Math.round(array.pressure * 100) / 100 + " mbar"
             humidity.innerHTML = "humidity: " + Math.round(array.humidity * 100) / 100 + " g/m3"
 
-            
+
 
             main[0].style.gridTemplateRows = "repeat(5, 1fr)";
             main[0].style.gridTemplateColumns = "repeat(5, 1fr)";
-           })
+        })
     })
-    
+
 
 }
 
@@ -113,24 +116,24 @@ function music() {
     main[0].style.gridTemplateRows = "repeat(4, 1fr)";
     main[0].style.gridTemplateColumns = "repeat(5, 1fr)";
     let track = 0;
-    
+
     var currentlyplaying = document.createElement("currentlyplaying")
-    currentlyplaying.innerHTML="currently playing:"
+    currentlyplaying.innerHTML = "currently playing:"
     main[0].appendChild(currentlyplaying);
-    
+
     var playlist = document.createElement("playlist")
-    playlist.innerHTML="playlist: "
+    playlist.innerHTML = "playlist: "
     main[0].appendChild(playlist)
 
     let select = document.createElement("select")
-    select.id ="mySelect"
+    select.id = "mySelect"
     main[0].appendChild(select)
 
     let currentplay = document.createElement("currentplay")
     currentplay.id = "currentplay";
     main[0].appendChild(currentplay)
     let play = document.createElement("play")
-           
+
     play.className = "musicbuttons"
     play.id = "play"
     main[0].appendChild(play)
@@ -151,41 +154,43 @@ function music() {
     previous.className = "musicbuttons"
     main[0].appendChild(previous);
 
-    fetch('http://192.168.178.63:5000/music').then(function (response) {
-        response.text().then(function (musiclist) {
+    fetch('http://192.168.178.63:5000/music').then(function(response) {
+        response.text().then(function(musiclist) {
 
             let musictitle = JSON.parse(musiclist)
             currentplay.innerHTML = musictitle[track].artist + " - " + musictitle[track].title; //Ausgabe zu Programmstart
-           
 
-            for (var i=0; i <musictitle.length;i++){  //Schleife hinzufügen Optionen aus array fetch
-            var option = document.createElement("option");
-            option.value = musictitle[i].title
-            option.text = musictitle[i].title
-            select.appendChild(option)
+
+            for (var i = 0; i < musictitle.length; i++) { //Schleife hinzufügen Optionen aus array fetch
+                var option = document.createElement("option");
+                option.value = musictitle[i].title
+                option.text = musictitle[i].title
+                select.appendChild(option)
             }
 
-            select.addEventListener("change", function(){ //Funktion wenn selectfeld geändert wird
-            track = this.selectedIndex;
-            currentplay.innerHTML = musictitle[track].artist + " - " + musictitle[track].title;
+            select.addEventListener("change", function() { //Funktion wenn selectfeld geändert wird
+                track = this.selectedIndex;
+                currentplay.innerHTML = musictitle[track].artist + " - " + musictitle[track].title;
             })
-            
-            skip.addEventListener("click", function () { //Funktion zu skip
-               
-                if(track<select.length-1){  //if-Bedingung um Springen über array hinaus zu vermeiden
-                track = track + 1;
-                select.selectedIndex= select.selectedIndex +1
-                document.getElementById("currentplay").innerHTML = musictitle[track].artist + " - " + musictitle[track].title;
-                }})
 
-            previous.addEventListener("click",function() {
-                if(track>0) {
-                    track = track -1 
-                    select.selectedIndex= select.selectedIndex - 1
+            skip.addEventListener("click", function() { //Funktion zu skip
+
+                if (track < select.length - 1) { //if-Bedingung um Springen über array hinaus zu vermeiden
+                    track = track + 1;
+                    select.selectedIndex = select.selectedIndex + 1
+                    document.getElementById("currentplay").innerHTML = musictitle[track].artist + " - " + musictitle[track].title;
+                }
+            })
+
+            previous.addEventListener("click", function() {
+                if (track > 0) {
+                    track = track - 1
+                    select.selectedIndex = select.selectedIndex - 1
                     document.getElementById("currentplay").innerHTML = musictitle[track].artist + " - " + musictitle[track].title;
 
-                }})
-          
+                }
+            })
+
 
         })
     });
@@ -193,7 +198,7 @@ function music() {
 }
 
 function Play() {
-    
+
     document.getElementById("play").style.display = "none"
     document.getElementById("pause").style.display = "block"
     document.getElementById("statustext").innerHTML = "The music is playing, my Lord"
@@ -201,7 +206,7 @@ function Play() {
 }
 
 function Pause() {
-    
+
     document.getElementById("pause").style.display = "none"
     document.getElementById("play").style.display = "block"
     document.getElementById("statustext").innerHTML = "The music is paused, my Lord"
@@ -215,7 +220,7 @@ function settings() {
     main[0].style.gridTemplateRows = "repeat(5, 1fr)"
     main[0].style.gridTemplateColumns = "repeat(7, 1fr)"
 
-    
+
     main[0].innerHTML = "Settings"
 
     /* Anlegen aller Buttons im DOM*/
@@ -284,7 +289,7 @@ function settings() {
 }
 
 function lock() {
-    
+
     document.getElementById("unlock").style.display = "block"
     document.getElementById("lock").style.display = "none"
 
@@ -376,8 +381,7 @@ function checkcountwindow() {
     } else if (countwindow == 0) {
         openall.style.display = "block"
         closeall.style.display = "none"
-    }
-    else {
+    } else {
         openall.style.display = "none"
         closeall.style.display = "none"
     }
